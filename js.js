@@ -25,7 +25,7 @@ function renderTaskList() {
 function deleteTask(index) {
     taskList.splice(index, 1);
     renderTaskList();
-    }
+    };
         console.log('Task 1');
     },
 
@@ -45,9 +45,7 @@ routineForm.addEventListener("submit", (e) => {
   const task = taskInput.value;
   const time = timeInput.value;
   const durationMinutes = durationMinutesInput.value;
-  //const status = statusInput.value;
 
-  // Create a new table row element
   const row = document.createElement("tr");
   row.innerHTML = `
     <td>${task}</td>
@@ -77,7 +75,5 @@ routineForm.addEventListener("submit", (e) => {
         console.log('Task 2');
     }
 };
-
-// Call the methods
 tasks.task1();
 tasks.task2();
