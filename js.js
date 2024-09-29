@@ -25,7 +25,7 @@ function renderTaskList() {
 function deleteTask(index) {
     taskList.splice(index, 1);
     renderTaskList();
-    };
+    }
         console.log('Task 1');
     },
 
