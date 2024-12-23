@@ -40,5 +40,4 @@ routineForm.addEventListener("submit", (e) => {
   timeInput.value = "";
   durationMinutesInput.value = "";
   statusInput.value = "";
-  
  });
