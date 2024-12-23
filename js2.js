@@ -1,4 +1,4 @@
- const routineForm = document.getElementById("routineForm");
+const routineForm = document.getElementById("routineForm");
 const routineTable = document.getElementById("routineTable");
 const routineBody = document.getElementById("routineBody");
 const addTask = document.getElementById("add-task-button");
@@ -8,10 +8,10 @@ const durationMinutesInput = document.getElementById("duration-minutes");
 
 routineForm.addEventListener("submit", (e) => {
   e.preventDefault();
-
   const task = taskInput.value;
   const time = timeInput.value;
   const durationMinutes = durationMinutesInput.value;
+  //const status = statusInput.value;
 
   const row = document.createElement("tr");
   row.innerHTML = `
@@ -23,10 +23,8 @@ routineForm.addEventListener("submit", (e) => {
   `;
 
   routineBody.appendChild(row);
-
   const deleteButton = row.querySelector('.delete-button');
   deleteButton.addEventListener('click', function(){
-    // Remove the row from the table body
     routineBody.removeChild(row);
   });
 
@@ -34,5 +32,4 @@ routineForm.addEventListener("submit", (e) => {
   timeInput.value = "";
   durationMinutesInput.value = "";
   statusInput.value = "";
-  
  });
