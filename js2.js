@@ -4,7 +4,6 @@ const taskInput = document.getElementById("task");
 const timeInput = document.getElementById("time");
 const durationMinutesInput = document.getElementById("duration-minutes");
 
-// Add an event listener to the form submission
 routineForm.addEventListener("submit", (e) => {
     e.preventDefault(); // Prevent the default form submission
 
@@ -12,7 +11,6 @@ routineForm.addEventListener("submit", (e) => {
     const time = timeInput.value;
     const durationMinutes = durationMinutesInput.value;
 
-    // Create a new table row element
     const row = document.createElement("tr");
     row.innerHTML = `
         <td>${task}</td>
@@ -21,21 +19,16 @@ routineForm.addEventListener("submit", (e) => {
         <td><input type="checkbox"> Done</td>
         <td><button class="delete-button">Delete</button></td>
     `;
-
-    // Append the new row to the table body
+    
     routineBody.appendChild(row);
 
-    // Add an event listener to the delete button
     const deleteButton = row.querySelector('.delete-button');
     deleteButton.addEventListener('click', function() {
         // Remove the row from the table body
         routineBody.removeChild(row);
     });
 
-    // Clear the input fields
     taskInput.value = "";
     timeInput.value = "";
     durationMinutesInput.value = "";
-
-    console.log('Task added:', task); // Log the added task
 });
