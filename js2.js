@@ -42,6 +42,5 @@ routineForm.addEventListener("submit", (e) => {
   statusInput.value = "";
   
  });
-        console.log('Task 2');
-    }
+     console.log('Task added:', task);
 };
