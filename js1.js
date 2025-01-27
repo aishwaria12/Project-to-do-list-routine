@@ -26,18 +26,18 @@ function deleteTask(index) {
 }
 
 // Save the list to a file
-        function saveToFile() {
-            const listItems = document.querySelectorAll('#todoList li');
-            let content = '';
+function saveToFile() {
+    const listItems = document.querySelectorAll('#task-list li'); // Corrected selector
+    let content = '';
 
-            listItems.forEach(item => {
-                const task = item.childNodes[0].textContent;
-                content += task + '\n';
-            });
+    listItems.forEach(item => {
+        const task = item.childNodes[0].textContent; // Get the task text
+        content += task + '\n'; // Add task to content
+    });
 
-            const blob = new Blob([content], { type: 'text/plain' });
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.download = 'todo-list.txt';
-            link.click();
-        }
+    const blob = new Blob([content], { type: 'text/plain' }); // Create Blob with content
+    const link = document.createElement('a'); // Create a download link
+    link.href = URL.createObjectURL(blob); // Create a URL for the Blob
+    link.download = 'todo-list.txt'; // Set the file name
+    link.click(); // Trigger the download
+}
