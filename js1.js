@@ -27,11 +27,11 @@ function deleteTask(index) {
 
 // Save the list to a file
 function saveToFile() {
-    const listItems = document.querySelectorAll('#task-list li'); // Corrected selector
+    const listItems = document.querySelectorAll('#task-list li'); // Select the list items
     let content = '';
 
     listItems.forEach(item => {
-        const task = item.childNodes[0].textContent; // Get the task text
+        const task = item.firstChild.textContent.trim(); // Get the task text from the first child node (which is the task itself)
         content += task + '\n'; // Add task to content
     });
 
