@@ -25,31 +25,26 @@ function deleteTask(index) {
     renderTaskList();
 }
 
-function saveToFile() {
-    setTimeout(() => {
-        const listItems = document.querySelectorAll('#task-list li'); 
-        let tasks = [];
+function saveToLocalStorage() {
+    const listItems = document.querySelectorAll('#task-list li');
+    let tasks = [];
 
-        listItems.forEach(item => {
-            const task = item.firstChild.textContent.trim();
-            tasks.push(task); 
-        });
+    listItems.forEach(item => {
+        const task = item.firstChild.textContent.trim();
+        tasks.push(task);
+    });
 
-        if (tasks.length === 0) {
-            alert("No tasks to save.");
-            return; 
-        }
+    // Save the tasks array to localStorage (as a JSON string)
+    localStorage.setItem('todo-list', JSON.stringify(tasks));
+    alert('To-do list saved to localStorage!');
+}
 
-        const content = tasks.join('\n'); 
-
-        // Create the Blob for saving
-        const blob = new Blob([content], { type: 'text/plain' });
-        const link = document.createElement('a'); // Create a download link
-        link.href = URL.createObjectURL(blob); // Create a URL for the Blob
-        link.download = 'todo-list.txt'; // Set the file name
-        link.click(); // Trigger the download
-
-        // Clean up the URL object
-        URL.revokeObjectURL(link.href);
-    }, 100); // Set a small timeout to prevent UI blocking
+function loadFromLocalStorage() {
+    const savedTasks = JSON.parse(localStorage.getItem('todo-list'));
+    if (savedTasks) {
+        // Render the tasks from localStorage
+        taskList = savedTasks;
+        renderTaskList();
+    }
+    
 }
