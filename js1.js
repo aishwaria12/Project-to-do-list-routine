@@ -25,15 +25,16 @@ function deleteTask(index) {
     renderTaskList();
 }
 
-// Save the list to a file
 function saveToFile() {
     const listItems = document.querySelectorAll('#task-list li'); // Select the list items
-    let content = '';
+    let tasks = [];
 
     listItems.forEach(item => {
-        const task = item.firstChild.textContent.trim(); // Get the task text from the first child node (which is the task itself)
-        content += task + '\n'; // Add task to content
+        const task = item.firstChild.textContent.trim(); // Get the task text from the first child node (task)
+        tasks.push(task); // Add task to the array
     });
+
+    const content = tasks.join('\n'); // Join all tasks with a newline
 
     const blob = new Blob([content], { type: 'text/plain' }); // Create Blob with content
     const link = document.createElement('a'); // Create a download link
